@@ -16,10 +16,15 @@ public class Line {
     private int xs;
     private int xt;
 
-    private double a;
-    private double b;
+    private double vectorAx;
+    private double vectorAy;
     private double c;
-    private double v;
+
+    Hub hub;
+
+    public Line(Hub hub) {
+        this.hub = hub;
+    }
 
     public Line(int ax, int ay, int bx, int by) {
         this.pointAx = ax;
@@ -40,8 +45,8 @@ public class Line {
 
     // x + y + c = 0
     public Line(int a, int b, int c) {
-        this.a = a;
-        this.b = b;
+        this.vectorAx = a;
+        this.vectorAy = b;
         this.c = c;
     }
 
@@ -107,8 +112,11 @@ public class Line {
 
 
     public String generalLine() {
-        int c = normalVectorX() * pointAx + normalVectorY() * pointBx;
-        return normalVectorX() + "x + " + normalVectorY() + "y" + " + " + -c + " = " + "0";
+        return normalVectorX() + "x + " + normalVectorY() + "y" + " + " + calculateC(Main.p) + " = " + "0";
+    }
+
+    public int calculateC(Line line) {
+        return (normalVectorX() * pointAx + normalVectorY() * pointAy) * -1;
     }
 
 
@@ -132,13 +140,51 @@ public class Line {
     }
 
     //v = ax0 + by0 + c / √ a2 + b2
-    public String distanceBetweenLines() {
+    /*public String distanceBetweenLines() {
 
-        v = (a * 0 + b * 0 + c) / Math.sqrt(a * a + b * b);
+    Fuuuuj, Radku.
 
-        return "v = " + v;
+        double distance = (vectorAx * 0 + vectorAy * 0 + c) / Math.sqrt(vectorAx * vectorAx + vectorAy * vectorAy);
+
+        if (distance < 0) {
+            distance *= -1;
+        }
+
+        return "v = " + distance;
+    }
+     */
+
+    public int chosenX, chosenY;
+
+    public void checkPoint(int pointAX, int pointAY, Line line) {
+        if (line.normalVectorX() * pointAX + line.normalVectorY() * pointAY + calculateC(Main.p) == 0) {
+            System.out.println("Bod leží na přímce");
+            chosenX = pointAX;
+            chosenY = pointAY;
+            if (calculateDistance(Main.z) == 0) {
+                System.out.println("Přímky jsou totožné");
+            }
+            System.out.println("Distance: " + calculateDistance(Main.z));
+
+        } else {
+            System.out.println("Bod neleží na přímce");
+        }
     }
 
+    public int sourX, sourY;
+
+    public int calculateLineRelation(Line line1, Line line2, int pointCoord) {
+        int y = (pointCoord * normalVectorX() + calculateC(line1)) * -1;
+        sourY = y * normalVectorY();
+        sourX = pointCoord;
+        return y * normalVectorY();
+    }
+
+    //v = ax0 + by0 + c / √ a2 + b2
+    public double calculateDistance(Line line) {
+        double v = ((line.normalVectorX() * chosenX) + (line.normalVectorY() * chosenY + calculateC(Main.z))) / Math.sqrt((line.normalVectorX() * line.normalVectorX()) + (line.normalVectorY() * line.normalVectorY()));
+        return v;
+    }
 
     //GETTERS AND SETTERS
 
