@@ -1,2 +1,2 @@
 # Lines
-Erik, Radek, Jakub
+Reindl, Zikmund, Novotný
