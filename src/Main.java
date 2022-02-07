@@ -1,7 +1,7 @@
 public class Main {
 
-    static Line p = new Line(2, 2, 1, 5);
-    static Line z = new Line(2, 2, 1, 5);
+    static Line_ p = new Line_(2, 2, 1, 5);
+    static Line_ z = new Line_(2, 2, 1, 5);
 
     public static void main(String[] args) {
         System.out.println(p.calculateC(p));
@@ -9,9 +9,9 @@ public class Main {
 
         System.out.println(z.generalLine());
         new Hub();
-        Line q = new Line(2.0, 2.0, 1, 1);
-        Line v = new Line(-1, 3, -16);
-        Line e = new Line(-1, 3, -4);
+        Line_ q = new Line_(2.0, 2.0, 1, 1);
+        Line_ v = new Line_(-1, 3, -16);
+        Line_ e = new Line_(-1, 3, -4);
 
         System.out.println("Průsečík: [" + p.sourX + ";" + p.calculateLineRelation(p, z, 3) + "]");
 

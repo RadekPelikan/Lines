@@ -1,4 +1,4 @@
-public class Line {
+public class Line_ {
 
     private int pointAx;
     private int pointAy;
@@ -22,11 +22,11 @@ public class Line {
 
     Hub hub;
 
-    public Line(Hub hub) {
+    public Line_(Hub hub) {
         this.hub = hub;
     }
 
-    public Line(int ax, int ay, int bx, int by) {
+    public Line_(int ax, int ay, int bx, int by) {
         this.pointAx = ax;
         this.pointAy = ay;
         this.pointBx = bx;
@@ -36,7 +36,7 @@ public class Line {
         vectorY = directionalVectorY();
     }
 
-    public Line(double x, double y, int vectorX, int vectorY) {
+    public Line_(double x, double y, int vectorX, int vectorY) {
         this.pointX = x;
         this.pointY = y;
         this.vectorX = vectorX;
@@ -44,7 +44,7 @@ public class Line {
     }
 
     // x + y + c = 0
-    public Line(int a, int b, int c) {
+    public Line_(int a, int b, int c) {
         this.vectorAx = a;
         this.vectorAy = b;
         this.c = c;
@@ -115,7 +115,7 @@ public class Line {
         return normalVectorX() + "x + " + normalVectorY() + "y" + " + " + calculateC(Main.p) + " = " + "0";
     }
 
-    public int calculateC(Line line) {
+    public int calculateC(Line_ line) {
         return (normalVectorX() * pointAx + normalVectorY() * pointAy) * -1;
     }
 
@@ -156,7 +156,7 @@ public class Line {
 
     public int chosenX, chosenY;
 
-    public void checkPoint(int pointAX, int pointAY, Line line) {
+    public void checkPoint(int pointAX, int pointAY, Line_ line) {
         if (line.normalVectorX() * pointAX + line.normalVectorY() * pointAY + calculateC(Main.p) == 0) {
             System.out.println("Bod leží na přímce");
             chosenX = pointAX;
@@ -173,7 +173,7 @@ public class Line {
 
     public int sourX, sourY;
 
-    public int calculateLineRelation(Line line1, Line line2, int pointCoord) {
+    public int calculateLineRelation(Line_ line1, Line_ line2, int pointCoord) {
         int y = (pointCoord * normalVectorX() + calculateC(line1)) * -1;
         sourY = y * normalVectorY();
         sourX = pointCoord;
@@ -181,7 +181,7 @@ public class Line {
     }
 
     //v = ax0 + by0 + c / √ a2 + b2
-    public double calculateDistance(Line line) {
+    public double calculateDistance(Line_ line) {
         double v = ((line.normalVectorX() * chosenX) + (line.normalVectorY() * chosenY + calculateC(Main.z))) / Math.sqrt((line.normalVectorX() * line.normalVectorX()) + (line.normalVectorY() * line.normalVectorY()));
         return v;
     }
