@@ -15,11 +15,11 @@ public class Angle {
             return;
         }
         a = Float.parseFloat(s);
-        this.a = a / 180 * Math.PI;
+        this.a = Math.toRadians(a);
     }
 
     public Angle(Double a) {
-        this.a = a / 180 * Math.PI;
+        this.a = Math.toRadians(a);
     }
 
     public double getRadian() {
@@ -27,6 +27,11 @@ public class Angle {
     }
 
     public double getDegrees() {
-        return this.a * 180 / Math.PI;
+        return Math.toDegrees(a);
+    }
+
+    @Override
+    public String toString() {
+        return "" + getDegrees();
     }
 }

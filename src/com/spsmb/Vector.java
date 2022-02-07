@@ -1,26 +1,37 @@
 package com.spsmb;
 
 public class Vector {
+
+    public static int id = 0;
+    public String name;
     public double x;
     public double y;
     public double z;
 
-    public Vector(Point a, Point b) {
-        x = b.x - a.x;
-        y = b.y - a.y;
-        z = b.z - a.z;
+    public Vector(String name, Point A, Point B) {
+        this.name = name;
+        this.x = B.x - A.x;
+        this.y = B.y - A.y;
+        this.z = B.z - A.z;
     }
 
-    public Vector(double x, double y) {
-        this.x = x;
-        this.y = y;
-        this.z = 0;
+    public Vector(Point A, Point B) {
+        this(String.format("v%d", id++), A, B);
     }
 
-    public Vector(double x, double y, double z) {
+    public Vector(String name, double x, double y, double z) {
+        this.name = name;
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    public Vector(double x, double y) {
+        this(String.format("v%d", id++), x, y, 0);
+    }
+
+    public Vector(double x, double y, double z) {
+        this(String.format("v%d", id++), x, y, z);
     }
 
     public Vector add(Vector v) {
@@ -38,11 +49,7 @@ public class Vector {
     }
 
     public double dotProduct(Vector v) {
-        return (this.x * v.x + this.y + v.y + this.z + v.z);
-    }
-
-    public double angle(Vector v) {
-        return Math.acos(dotProduct(v) / (this.size() * v.size()));
+        return (this.x * v.x + this.y * v.y + this.z * v.z);
     }
 
     public Vector crossProduct(Vector v) {
@@ -57,11 +64,21 @@ public class Vector {
         return new Vector(y, -x);
     }
 
+    public Angle angleBetween(Vector v) {
+        double i = Math.acos(dotProduct(v) / (this.size() * v.size()));
+        return new Angle(Math.toDegrees(i));
+    }
+
+    public Angle getAngle() {
+        double i = Math.atan(y / x);
+        return new Angle(Math.toDegrees(i));
+    }
+
     @Override
     public String toString() {
         if (z == 0) {
-            return String.format("v = (%.1f, %.1f)", x, y);
+            return String.format("%s = (%.1f, %.1f)", name, x, y);
         }
-        return String.format("v = (%.1f, %.1f, %.1f)", x, y, z);
+        return String.format("%s = (%.1f, %.1f, %.1f)", name, x, y, z);
     }
 }

@@ -36,7 +36,7 @@ public class Line {
 
     /*
      Angle and height:
-     y = atan(angle) * x + b
+     y = tan(angle) * x + b
          angle: Angle
          b: double
      */
@@ -84,6 +84,66 @@ public class Line {
         this.c = P.x + P.y;
     }
 
+    // Simplify the equation:       x = -by - c
+    public Line simpleLineForm() {
+        double a = this.a * (this.a < 0 ? -1 : 1);
+        return new Line(a, this.b / this.a, this.c / this.a);
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+    // Make vector from line
+    ////////////////////////////////////////////////////////////////////////////////////////
+    public Vector getVector() {
+        return getNormalVector().normal();
+    }
+
+    public Vector getNormalVector() {
+        return new Vector(a, b);
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+    // Relative line positions
+    ////////////////////////////////////////////////////////////////////////////////////////
+    public boolean isParallel(Line l) {
+        Line p = simpleLineForm();
+        Line q = l.simpleLineForm();
+        return p.a == q.a && p.b == q.b;
+    }
+
+    public boolean isOverlapping(Line l) {
+        Line p = simpleLineForm();
+        Line q = l.simpleLineForm();
+        return p.a == q.a && p.b == q.b && p.c == q.c;
+    }
+
+    public boolean has(Point P) {
+        return a * P.x + b * P.y + c == 0;
+    }
+
+    public Point intersectionPoint(Line l) {
+        if (!isIntersecting(l)) {
+            return null;
+        }
+        Line p = simpleLineForm();
+        Line q = l.simpleLineForm();
+
+        double y = (p.c + q.c) / (p.b - q.b);
+        double x = -p.b * y - p.c;
+        return new Point(x, y);
+    }
+
+    public boolean isIntersecting(Line l) {
+        return !isParallel(l) && !isOverlapping(l);
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+    // Forms of equations
+    ////////////////////////////////////////////////////////////////////////////////////////
     public String parametricForm() {
         int x = 0;
         Point P = new Point(x, (-a * x + c) / b);
@@ -116,6 +176,20 @@ public class Line {
     public String smernicovyTvar() {
         return slopeInterceptForm();
     }
+    ////////////////////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+    // Angles
+    ////////////////////////////////////////////////////////////////////////////////////////
+    public Angle angleBetween(Line l) {
+        return getVector().angleBetween(l.getVector());
+    }
+
+    public Angle getAngle() {
+        return getVector().getAngle();
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////
 
     public int getDecPoints() {
         return decPoints;
@@ -123,5 +197,14 @@ public class Line {
 
     public void setDecPoints(int decPoints) {
         this.decPoints = Math.max(decPoints, 0);
+    }
+
+    @Override
+    public String toString() {
+        return "Line{" +
+                "a=" + a +
+                ", b=" + b +
+                ", c=" + c +
+                '}';
     }
 }
