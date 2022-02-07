@@ -1,3 +1,5 @@
+package com.spsmb;
+
 public class Vector {
     public double x;
     public double y;
@@ -26,7 +28,7 @@ public class Vector {
     }
 
     public double size() {
-        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2)+ Math.pow(this.z, 2));
+        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
     }
 
     public void scale(float k) {
@@ -44,6 +46,22 @@ public class Vector {
     }
 
     public Vector crossProduct(Vector v) {
-        return new Vector(this.y * v.z - this.z * v.y, this.z * v.x - this.x * v.z, this.x * v.y - this.y * v.x);
+        return new Vector(
+                this.y * v.z - this.z * v.y,
+                this.z * v.x - this.x * v.z,
+                this.x * v.y - this.y * v.x
+        );
+    }
+
+    public Vector normal() {
+        return new Vector(y, -x);
+    }
+
+    @Override
+    public String toString() {
+        if (z == 0) {
+            return String.format("v = (%.1f, %.1f)", x, y);
+        }
+        return String.format("v = (%.1f, %.1f, %.1f)", x, y, z);
     }
 }

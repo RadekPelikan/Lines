@@ -1,3 +1,5 @@
+package com.spsmb;
+
 public class Point {
     public double x;
     public double y;
@@ -13,5 +15,13 @@ public class Point {
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    @Override
+    public String toString() {
+        if (z == 0) {
+            return String.format("P[%.1f, %.1f]", x, y);
+        }
+        return String.format("P[%.1f, %.1f, %.1f]", x, y, z);
     }
 }
