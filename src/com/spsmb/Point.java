@@ -33,6 +33,10 @@ public class Point {
                 (this.y + P.y) / 2);
     }
 
+    public double distance(Point P) {
+        return Math.sqrt(Math.pow(P.x - this.x, 2) + Math.pow(P.y - this.y, 2) + Math.pow(P.z - this.z, 2));
+    }
+
     @Override
     public String toString() {
         if (z == 0) {
