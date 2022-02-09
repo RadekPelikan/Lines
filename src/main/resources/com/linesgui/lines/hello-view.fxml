@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="43.0" layoutY="100.0" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <HBox prefHeight="61.0" prefWidth="100.0">
+               <children>
+                  <ComboBox prefWidth="150.0" promptText="new" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="169.0" layoutY="100.0" prefHeight="200.0" prefWidth="139.0" spacing="10.0">
+         <children>
+            <HBox prefHeight="0.0" prefWidth="259.0" spacing="7.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="2.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="28.0" text="Point" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <HBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="50.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="93.0" text="create" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox minWidth="-Infinity" prefHeight="26.0" prefWidth="99.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefHeight="26.0" prefWidth="31.0" text="name" HBox.hgrow="ALWAYS" />
+                                    <TextField maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="32.0" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="26.0" prefWidth="136.0" spacing="5.0" HBox.hgrow="SOMETIMES">
+                                 <children>
+                                    <Label maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="0.0" text="X" />
+                                    <TextField prefHeight="26.0" prefWidth="78.0" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="26.0" prefWidth="136.0" spacing="5.0" HBox.hgrow="SOMETIMES">
+                                 <children>
+                                    <Label maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="0.0" text="Y" />
+                                    <TextField prefHeight="26.0" prefWidth="1.0" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <Separator prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: grey;" />
+                     </children></VBox>
+               </children>
+            </HBox>
+         </children></VBox>
+   </children>
+</AnchorPane>

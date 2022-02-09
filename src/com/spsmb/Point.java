@@ -40,8 +40,8 @@ public class Point {
     @Override
     public String toString() {
         if (z == 0) {
-            return String.format("%s[%.1f, %.1f]",name, x, y);
+            return String.format("%s[%.1f, %.1f]", name, x, y);
         }
-        return String.format("%s[%.1f, %.1f, %.1f]",name, x, y, z);
+        return String.format("%s[%.1f, %.1f, %.1f]", name, x, y, z);
     }
 }
